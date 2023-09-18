@@ -61,39 +61,33 @@ def set_default_sudoku_grid():
 
 # Check
 def is_present_in_row(grid: List[List[int]], row_index: int, digit: int) -> bool:
-    """
-    Checks if the digit is present in other cells in this row. Returns True if this the case.
-    Author: Fabian Zoehrer
-    :param grid: Sudoku grid
-    :param row_index: row index of the cell
-    :param digit: column of the cell
-    :return: True, if the digit is present i the row, otherwise False
-    """
-    return True
+    List = grid
+    row_part = []
+    row = row_index - 1
+    for i in range(row, row + 3):
+        row_part.append(List[i])
+
+    if digit in row_part:
+        return True
+    elif digit not in row_part:
+        return False
+
 
 
 def is_present_in_column(grid: List[List[int]], column_index: int, digit: int) -> bool:
-    pass
+    list = grid
+    column_part = []
+    column = column_index - 1
+    for i in range(0, 10):
+        column_part.append(list[i][column])
+
+    if column in column_part:
+        return True
+    elif column not in column_part:
+        return False
 
 
 def is_present_in_block(grid: List[List[int]], row_index: int, column_index: int, digit: int) -> bool:
-    line_1 = []
-    line_2 = []
-    line_3 = []
-
-    count = 0
-
-    for i in grid:
-        line_1 = grid[i]
-
-    for j in grid:
-        line_2 = grid[j]
-
-    for k in grid:
-        line_3 = grid[k]
-
-    return print(line_1, line_2, line_3)
-
     pass
 
 
