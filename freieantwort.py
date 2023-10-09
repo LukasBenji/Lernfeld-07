@@ -1,20 +1,20 @@
 class FreieAntwort:
-
     def __init__(self):
         self.answer = ""
 
 def check_freieantwort():
     while True:
-        answer = input("What is your answer: ")
-        if answer:
-            break
-        elif not answer.isalnum():
-            print("Bitte geben Sie eine valide Eingabe ein.")
+        answer = input("Was ist deine Antwort: ")
+        if answer.strip():
+            return answer
         else:
-            print("Bitte geben Sie etwas ein.")
+            print("Bitte gib eine valide Antwort ein.")
 
 def main():
-    check_freieantwort()
+    print("Hallo Alice. Hier kannst du freie Antworten geben.")
+    freie_antwort = FreieAntwort()
+    freie_antwort.answer = check_freieantwort()
+    print("Deine Antwort: " + freie_antwort.answer)
 
 if __name__ == "__main__":
     main()
