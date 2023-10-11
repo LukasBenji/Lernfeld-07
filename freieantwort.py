@@ -1,41 +1,39 @@
 import random
 
-class FreieAntwort:
+class Frage:
+    def __init__(self, frage, antwort):
+        self.frage = frage
+        self.antwort = antwort
+
+class FreiesAntwortSpiel:
     def __init__(self):
-        self.answer = ""
+        self.frage_liste = []
+        self.frage_liste.append(Frage("Wofür steht OOP? ", "objektorientierte programmierung"))
+        self.frage_liste.append(Frage("Was ist ein String? ", "zeichenkette"))
+        self.frage_liste.append(Frage("Was ist ein Integer? ", "Ganzahl"))
 
-def get_random_question():
-    questions = [
-        ("Wofür steht OOP? ", "objektorientierte programmierung"),
-        ("Was ist ein String? ", "zeichenkette"),
-        ("Was ist ein Integer", "Ganzahl")
-    ]
-    return random.choice(questions)
+    def get_random_question(self):
+        return random.choice(self.frage_liste)
 
-
-def check_freieantwort():
-    while True:
-        answer = input("Was ist deine Antwort: ")
-        if answer.strip() and not answer.isdigit():
-            return answer
+    def check_freieantwort(self, antwort):
+        if antwort.strip() and not antwort.isdigit():
+            return antwort
         else:
-            print("Bitte gib eine valide Antwort ein.")
+            return "Bitte gib eine valide Antwort ein."
 
+    def spielen(self):
+        print("Hallo Alice. Hier kannst du freie Antworten geben.")
+        frage_obj = self.get_random_question()
+        print(frage_obj.frage)
+        antwort = input("Was ist deine Antwort: ")
+        antwort = self.check_freieantwort(antwort)
+        print("Deine Antwort: " + antwort)
 
-def main():
-    print("Hallo Alice. Hier kannst du freie Antworten geben.")
-    question, right_answer = get_random_question()
-    print(question)
-
-    freie_antwort = FreieAntwort()
-    freie_antwort.answer = check_freieantwort()
-    print("Deine Antwort: " + freie_antwort.answer)
-
-    if freie_antwort.answer.lower() == right_answer:
-        print("Deine Antwort ist korrekt!")
-    else:
-        print("Deine Antwort ist nicht korrekt. Die richtige Antwort ist:", right_answer)
-
+        if antwort.lower() == frage_obj.antwort:
+            print("Deine Antwort ist korrekt!")
+        else:
+            print("Deine Antwort ist nicht korrekt. Die richtige Antwort ist:", frage_obj.antwort)
 
 if __name__ == "__main__":
-    main()
+    spiel = FreiesAntwortSpiel()
+    spiel.spielen()
