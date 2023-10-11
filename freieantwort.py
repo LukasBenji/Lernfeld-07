@@ -4,7 +4,6 @@ class FreieAntwort:
     def __init__(self):
         self.answer = ""
 
-
 def get_random_question():
     questions = [
         ("Wofür steht OOP? ", "objektorientierte programmierung"),
